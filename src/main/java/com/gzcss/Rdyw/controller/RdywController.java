@@ -2,17 +2,16 @@ package com.gzcss.Rdyw.controller;
 
 
 import com.gzcss.Rdyw.entity.RdywEntity;
+import com.gzcss.Rdyw.entity.Test;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @RestController()
-@RequestMapping("/rwyw")
+@RequestMapping("/rdyw")
 public class RdywController {
 
     @PostMapping("rdyw")
@@ -28,5 +27,15 @@ public class RdywController {
         request.getSession().setAttribute("rdywEntity",rdywEntity1);
         return  rdywEntity1;
     };
+
+    @ResponseBody
+    @GetMapping("test")
+    public Test test(){
+        Test test= new Test();
+        test.setAddress("非洲");
+        test.setName("大傻逼");
+        test.setDate("2022-03-03");
+        return test;
+    }
 
 }
