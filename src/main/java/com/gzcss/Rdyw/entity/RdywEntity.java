@@ -2,6 +2,8 @@ package com.gzcss.Rdyw.entity;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class RdywEntity {
 
@@ -14,6 +16,7 @@ public class RdywEntity {
     private String reportDiskTotal;    //硬盘总容量(GB)
     private String reportDiskFree;    //硬盘剩余(GB)
     private String reportDiskUsedPercent;    //硬盘使用率%
+    private LocalDateTime updateTime;   //更新时间
 
 
 }

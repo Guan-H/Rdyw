@@ -2,12 +2,13 @@ package com.gzcss.Rdyw.controller;
 
 
 import com.gzcss.Rdyw.entity.RdywEntity;
-import com.gzcss.Rdyw.entity.Test;
-import lombok.Data;
+import com.gzcss.Rdyw.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +25,15 @@ public class RdywController {
 
     @ResponseBody
     @GetMapping("test")
-    public List<Test> test(){
-        Test test= new Test();
+    public List<User> test(){
+        User test= new User();
         test.setAddress("非洲");
-        test.setName("大傻逼");
-        test.setDate("2022-03-03");
-        List<Test> list = new ArrayList<>();
+        test.setUsername("大傻逼");
+        //获取当前时间，并格式化
+        LocalDateTime localDateTime = LocalDateTime.now();
+        String format = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        test.setDate(localDateTime);
+        List<User> list = new ArrayList<>();
         list.add(test);
         return list;
     }

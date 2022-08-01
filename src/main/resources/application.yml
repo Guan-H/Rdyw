@@ -1,0 +1,29 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: GGH
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    dynamic:
+      # 指定默认数据源
+      primary: master
+      # true：找不到数据源报错，false：找不到数据源则使用数据源
+      strict: false
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://121.41.2.141:3307/RDYW?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&nuLlCatalogMeansCurrent=true
+          username: root
+          password: root
+
+        #flowable:
+        #  driver-class-name: com.mysql.jdbc.Driver
+        #  url: jdbc:mysql://localhost:3306/flowable?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&nuLlCatalogMeansCurrent=true
+        #  username: root
+        #  password: 123456
+
+mybatis-plus:
+  configuration:
+    #控制台打印SQL
+    log-impl:  org.apache.ibatis.logging.stdout.StdOutImpl

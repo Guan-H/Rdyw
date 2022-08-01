@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SYS_INFO</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/index.css">
+
+</head>
+<body>
+    <div id="app">
+        <el-table :data="tableData" style="width: 100%">
+            <el-table-column prop="reportCPUs" label="CPU数量" width="180">
+            </el-table-column>
+            <el-table-column prop="reportCPUType" label="CPU类型" width="180">
+            </el-table-column>
+            <el-table-column prop="reportArch" label="CPU架构">
+            </el-table-column>
+            <el-table-column prop="reportMemTotal" label="内存总容量(MB)">
+            </el-table-column>
+            <el-table-column prop="reportMemFree" label="内存剩余(MB)">
+            </el-table-column>
+            <el-table-column prop="reportMemUsedPercent" label="内存使用率%">
+            </el-table-column>
+            <el-table-column prop="reportDiskTotal" label="硬盘总容量(GB)">
+            </el-table-column>
+            <el-table-column prop="reportDiskFree" label="硬盘剩余(GB)">
+            </el-table-column>
+            <el-table-column prop="reportDiskUsedPercent" label="硬盘使用率%">
+            </el-table-column>
+            <el-table-column prop="updateTime" label="更新时间">
+            </el-table-column>
+        </el-table>
+        <button @click="get()">点击发送请求</button>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                tableData: [],
+            }
+        },
+        methods:{
+            demo(){
+                axios({
+                    method: 'get',//请求方法
+                    /*                    params: {
+                                            id: 12,//请求参数
+                                        },*/
+                    url: '/rdyw/test',
+                }).then(res => {
+                    //执行成功后代码处理
+                    this.tableData = res.data;
+                })
+            }
+        },
+        //初始化时
+        created(){
+            //this.demo()
+        }
+    })
+
+</script>
+</html>
